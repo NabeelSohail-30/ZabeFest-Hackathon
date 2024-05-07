@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customer Sign In - SmartKart</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../aseets/styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <h1>SmartKart</h1>
+    </header>
+
+    <div class="container">
+      <h2>Customer Sign In</h2>
+      <form id="signInForm">
+        <div class="form-group">
+          <label for="branch">Branch</label>
+          <select class="form-control" id="branch" name="branch" required>
+            <!-- Branch codes will be populated dynamically -->
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            name="password"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Sign In</button>
+      </form>
+      <p>Don't have an account? <a href="./signUp.html">Sign Up</a></p>
+    </div>
+
+    <footer class="footer">
+      <p>&copy; 2024 SmartKart. All rights reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Fetch branch codes from the server
+      fetchBranchCodes();
+
+      function fetchBranchCodes() {
+        const apiUrl = "http://localhost:5001/api/branches/codes";
+        fetch(apiUrl)
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Network response was not ok");
+            }
+            return response.json();
+          })
+          .then((data) => {
+            // Populate the branch dropdown with fetched branch codes
+            const branchDropdown = document.getElementById("branch");
+            data.forEach((branchCode) => {
+              const option = document.createElement("option");
+              option.value = branchCode;
+              option.textContent = branchCode;
+              branchDropdown.appendChild(option);
+            });
+          })
+          .catch((error) => {
+            console.error(
+              "There was a problem with the fetch operation:",
+              error
+            );
+            alert("Failed to fetch branch codes. Please try again later."); // You can customize this message as needed
+          });
+      }
+
+      const signInForm = document.getElementById("signInForm");
+      signInForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        // Retrieve form data
+        const branch = document.getElementById("branch").value;
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value.trim();
+
+        // Basic validation
+        if (email === "" || password === "") {
+          alert("Email and password are required");
+          return;
+        }
+
+        // Dummy API endpoint for sign-in (replace it with your actual endpoint)
+        const apiUrl = "https://api.example.com/signin";
+
+        // Data to be sent to the server for sign-in
+        const data = {
+          branch,
+          email,
+          password,
+        };
+
+        // Dummy API request for sign-in (replace it with your actual request method)
+        fetch(apiUrl, {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Network response was not ok");
+            }
+            return response.json();
+          })
+          .then((data) => {
+            alert("Sign in successful!");
+            window.location.href =
+              "https://github.com/NabeelSohail-30/ZabeFest-Hackathon";
+          })
+          .catch((error) => {
+            console.error(
+              "There was a problem with the fetch operation:",
+              error
+            );
+            alert("Sign in failed. Please try again later.");
+          });
+      });
+    });
+  </script>
+</html>
