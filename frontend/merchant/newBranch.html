@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add New Branch - SmartKart</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../aseets/styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <h1>SmartKart</h1>
+    </header>
+
+    <div class="container">
+      <h2>Add New Branch</h2>
+      <form id="addBranchForm">
+        <div class="form-group">
+          <label for="branchCode">Branch Code</label>
+          <input
+            type="text"
+            class="form-control"
+            id="branchCode"
+            name="branchCode"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="branchName">Branch Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="branchName"
+            name="branchName"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="location">Location</label>
+          <input
+            type="text"
+            class="form-control"
+            id="location"
+            name="location"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Add Branch</button>
+      </form>
+    </div>
+
+    <footer class="footer">
+      <p>&copy; 2024 SmartKart. All rights reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.getElementById("addBranchForm");
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        // Validate form fields
+        const branchCode = document.getElementById("branchCode").value.trim();
+        const branchName = document.getElementById("branchName").value.trim();
+        const location = document.getElementById("location").value.trim();
+
+        if (branchCode === "" || branchName === "" || location === "") {
+          alert("All fields are required");
+          return;
+        }
+
+        const apiUrl = "http://localhost:5001/api/branches/new-branch";
+
+        const data = {
+          branchCode,
+          branchName,
+          location,
+        };
+
+        fetch(apiUrl, {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Network response was not ok");
+            }
+            return response.json();
+          })
+          .then((data) => {
+            alert("Branch added successfully!"); // You can customize this message as needed
+            form.reset(); // Reset the form after successful addition
+          })
+          .catch((error) => {
+            console.error(
+              "There was a problem with the fetch operation:",
+              error
+            );
+            alert("Failed to add branch. Please try again later."); // You can customize this message as needed
+          });
+      });
+    });
+  </script>
+</html>

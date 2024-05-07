@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customer Signup - SmartKart</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../aseets/styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <h1>SmartKart</h1>
+    </header>
+
+    <div class="container">
+      <h2>Customer Signup</h2>
+      <form id="signupForm">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            name="name"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="cnic">CNIC</label>
+          <input
+            type="text"
+            class="form-control"
+            id="cnic"
+            name="cnic"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="bankAccount">Bank Account Number</label>
+          <input
+            type="text"
+            class="form-control"
+            id="bankAccount"
+            name="bankAccount"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            name="password"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Signup</button>
+      </form>
+      <p>Already have an account? <a href="signin.html">Sign In</a></p>
+    </div>
+
+    <footer class="footer">
+      <p>&copy; 2024 SmartKart. All rights reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("signupForm");
+
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          // Validate form fields
+          const name = document.getElementById("name").value.trim();
+          const cnic = document.getElementById("cnic").value.trim();
+          const email = document.getElementById("email").value.trim();
+          const bankAccount = document
+            .getElementById("bankAccount")
+            .value.trim();
+          const password = document.getElementById("password").value.trim();
+
+          if (
+            name === "" ||
+            cnic === "" ||
+            email === "" ||
+            bankAccount === "" ||
+            password === ""
+          ) {
+            alert("All fields are required");
+            return;
+          }
+
+          const apiUrl = "http://localhost:5001/api/customers/new-customer";
+
+          const data = {
+            name,
+            cnic,
+            email,
+            bankAccount,
+            password,
+          };
+
+          fetch(apiUrl, {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error("Network response was not ok");
+              }
+              return response.json();
+            })
+            .then((data) => {
+              alert("Signup successful!");
+              form.reset();
+            })
+            .catch((error) => {
+              console.error(
+                "There was a problem with the fetch operation:",
+                error
+              );
+              alert("Signup failed. Please try again later.");
+            });
+        });
+      });
+    </script>
+  </body>
+</html>

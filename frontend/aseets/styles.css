@@ -1,0 +1,75 @@
+:root {
+  --yinmn-blue: #2a4779ff;
+  --polynesian-blue: #0b4f9fff;
+  --lapis-lazuli: #3462a4ff;
+  --vista-blue: #7594bfff;
+  --antiflash-white: #eaebf0ff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  background-color: var(--yinmn-blue);
+  color: var(--antiflash-white);
+  text-align: center;
+  padding: 20px 0;
+}
+
+.wrapper {
+  background-color: var(--vista-blue);
+  width: fit-content;
+  margin: auto;
+  padding: 50px 80px;
+  text-align: center;
+  transform: translateY(100%);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+  z-index: 1;
+  transition: 0.5s;
+}
+
+.container {
+  background-color: var(--vista-blue);
+  width: 30%;
+  margin: 30px auto;
+  padding: 50px 80px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.footer {
+  background-color: var(--yinmn-blue);
+  color: var(--antiflash-white);
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.btn {
+  margin: 10px;
+}
+
+.btn-primary {
+  background-color: var(--polynesian-blue);
+  border-color: var(--polynesian-blue);
+}
+
+.btn-primary:hover {
+  background-color: var(--antiflash-white);
+  border-color: var(--polynesian-blue);
+  color: var(--polynesian-blue);
+}
