@@ -1,0 +1,107 @@
+/* CSS HEX */
+--yinmn-blue: #2a4779ff;
+--polynesian-blue: #0b4f9fff;
+--lapis-lazuli: #3462a4ff;
+--vista-blue: #7594bfff;
+--antiflash-white: #eaebf0ff;
+
+/* CSS HSL */
+--yinmn-blue-hsl: hsla(218, 48%, 32%, 1);
+--polynesian-blue-hsl: hsla(212, 87%, 33%, 1);
+--lapis-lazuli-hsl: hsla(215, 52%, 42%, 1);
+--vista-blue-hsl: hsla(215, 37%, 60%, 1);
+--antiflash-white-hsl: hsla(230, 17%, 93%, 1);
+
+/* SCSS HEX */
+$yinmn-blue: #2a4779ff;
+$polynesian-blue: #0b4f9fff;
+$lapis-lazuli: #3462a4ff;
+$vista-blue: #7594bfff;
+$antiflash-white: #eaebf0ff;
+
+/* SCSS HSL */
+$yinmn-blue-hsl: hsla(218, 48%, 32%, 1);
+$polynesian-blue-hsl: hsla(212, 87%, 33%, 1);
+$lapis-lazuli-hsl: hsla(215, 52%, 42%, 1);
+$vista-blue-hsl: hsla(215, 37%, 60%, 1);
+$antiflash-white-hsl: hsla(230, 17%, 93%, 1);
+
+/* SCSS RGB */
+$yinmn-blue-rgb: rgba(42, 71, 121, 1);
+$polynesian-blue-rgb: rgba(11, 79, 159, 1);
+$lapis-lazuli-rgb: rgba(52, 98, 164, 1);
+$vista-blue-rgb: rgba(117, 148, 191, 1);
+$antiflash-white-rgb: rgba(234, 235, 240, 1);
+
+/* SCSS Gradient */
+$gradient-top: linear-gradient(
+  0deg,
+  var(--yinmn-blue),
+  var(--polynesian-blue),
+  var(--lapis-lazuli),
+  var(--vista-blue),
+  var(--antiflash-white)
+);
+$gradient-right: linear-gradient(
+  90deg,
+  var(--yinmn-blue),
+  var(--polynesian-blue),
+  var(--lapis-lazuli),
+  var(--vista-blue),
+  var(--antiflash-white)
+);
+$gradient-bottom: linear-gradient(
+  180deg,
+  var(--yinmn-blue),
+  var(--polynesian-blue),
+  var(--lapis-lazuli),
+  var(--vista-blue),
+  var(--antiflash-white)
+);
+$gradient-left: linear-gradient(
+  270deg,
+  var(--yinmn-blue),
+  var(--polynesian-blue),
+  var(--lapis-lazuli),
+  var(--vista-blue),
+  var(--antiflash-white)
+);
+$gradient-top-right: linear-gradient(
+  45deg,
+  var(--yinmn-blue),
+  var(--polynesian-blue),
+  var(--lapis-lazuli),
+  var(--vista-blue),
+  var(--antiflash-white)
+);
+$gradient-bottom-right: linear-gradient(
+  135deg,
+  var(--yinmn-blue),
+  var(--polynesian-blue),
+  var(--lapis-lazuli),
+  var(--vista-blue),
+  var(--antiflash-white)
+);
+$gradient-top-left: linear-gradient(
+  225deg,
+  var(--yinmn-blue),
+  var(--polynesian-blue),
+  var(--lapis-lazuli),
+  var(--vista-blue),
+  var(--antiflash-white)
+);
+$gradient-bottom-left: linear-gradient(
+  315deg,
+  var(--yinmn-blue),
+  var(--polynesian-blue),
+  var(--lapis-lazuli),
+  var(--vista-blue),
+  var(--antiflash-white)
+);
+$gradient-radial: radial-gradient(
+  var(--yinmn-blue),
+  var(--polynesian-blue),
+  var(--lapis-lazuli),
+  var(--vista-blue),
+  var(--antiflash-white)
+);

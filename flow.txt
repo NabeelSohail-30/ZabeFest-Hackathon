@@ -1,0 +1,12 @@
+Customer:-
+Sign Up (Web)
+Sign In (Mobile) - sign in with location based authentication and using jwt token
+User will select branch, and now it will have the access to scan and put the item of that specific branch into the cart and we will also validate the quantity of the item with the inventory and update it.
+user scans / uploads the qr code, data shows, select qty, add to cart
+checkout
+security check for fraud
+transaction history
+logout
+
+Merchant:- (only web)
+track customer details, orders and inventory and transaction history

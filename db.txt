@@ -1,0 +1,33 @@
+Branches:
+Id
+Branch code
+Branch Name
+location
+
+Inventory:
+Id
+Name
+price
+quantity
+category
+branchcode
+
+Customer:
+Name
+Email
+Phone
+Bank Account
+CNIC
+
+CustomerTransaction:
+Id
+Customer
+Amount
+Branch
+Date Time
+
+Merchant history:
+transaction details
+inventory details
+customer details
+
